@@ -2,9 +2,9 @@
 
 #define STUDENT_H
 struct Student {
-    int key;
     char* name;
     char* email; 
+    int key;
 };
 
 struct Student* createStudent(int addKey, char* addName, char* addEmail);
