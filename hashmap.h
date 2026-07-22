@@ -21,10 +21,6 @@ struct HashMap {
     enum type implementation;
 };
 
-struct ChainHashData {
-    struct Node** buckets;
-};
-
 int hashOne(int key, int size);
 int hashTwo(int key);
 int hash(int key, int size, int collisions);

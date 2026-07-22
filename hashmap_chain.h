@@ -2,10 +2,10 @@
 
 #define HASHMAP_CHAIN_H
 #include "student.h"
+#include "linkedlist.h"
 
 struct ChainHashData {
-    struct Student** table;
-    int* status;
+    struct LinkedList* buckets;
 };
 
 void initChainHashMap(struct HashMap* hashMapChain);
