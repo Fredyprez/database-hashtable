@@ -10,14 +10,4 @@ struct Node {
 struct Node* createNode(struct Student* student);
 void destroyNode(struct Node** nodePtr);
 void printNode(struct Node* node);
-
-
-
-
-
-
-
-
-
-
 #endif

@@ -21,4 +21,4 @@ void removeStudentChain(struct HashMap* map, int removeKey);
 
 void printChainHashData(struct HashMap* hashMap);
 void printStudentChain(struct HashMap* hashMap, int searchKey);
-#endif HASHMAP_CHAIN_H
+#endif

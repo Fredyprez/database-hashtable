@@ -1,4 +1,3 @@
-#include "student.h"
 #include "student_node.h"
 
 #include <stdlib.h>
@@ -10,6 +9,7 @@ struct Node* createNode(struct Student* student){
     return newNode;
 }
 void destroyNode(struct Node** nodePtr){
+    if (nodePtr == NULL || *nodePtr == NULL) return;
     struct Node* node = *nodePtr;
     destroyStudent(&node->student);
     free(node);
