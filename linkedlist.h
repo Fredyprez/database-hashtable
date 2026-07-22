@@ -1,8 +1,23 @@
-#include "hashmap.h"
+#ifndef LINKEDLIST_H
 
-struct Node {
-    struct Student* student;
-    struct Node* next;
+#define LINKEDLIST_H
+#include "student_node.h"
+
+struct LinkedList {
+    struct Node* head;
+    struct Node* tail;
+    int sizeList;
 };
 
-struct Node* createNode(struct Student* student);
+
+
+
+
+
+
+
+
+
+
+
+#endif

@@ -39,7 +39,7 @@ int searchOpen(struct HashMap* hashMap, int searchKey){
     bool found = false;
     struct OpenHashData* data = hashMap->hashData;
     int index = hash(searchKey, hashMap->tableSize, collisions);
-    while (data->status[index] != 0 && collisions < hashMap->tableSize/2 && found == false){
+    while (data->status[index] != 0 && collisions < hashMap->tableSize && found == false){
         if (data->status[index] == 1  && data->table[index]->key == searchKey) found = true;
         else {
             collisions += 1;
@@ -94,7 +94,7 @@ void printStudentOpen(struct HashMap* hashMap, int searchKey){
     if (hashMap == NULL) return;
     int printIndex = searchOpen(hashMap, searchKey);
     struct OpenHashData* data = hashMap->hashData;
-    if (printIndex == -1 || printIndex == 0) printf("Student does not exist\n");
+    if (printIndex == -1) printf("Student does not exist\n");
     else printf("[%d] OCUPY and status is %d\tId: %d\tName: %s\tEmail: %s\n",
                 printIndex,
                 data->status[printIndex],
