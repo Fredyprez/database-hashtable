@@ -10,7 +10,7 @@ struct OpenHashData {
 
 void initOpenHashMap(struct HashMap* hashMapOpen);
 
-struct OpenHashData* createOpenHashData(struct HashMap* map);
+struct OpenHashData* createOpenHashData(struct HashMap* hashMap);
 
 void destroyOpenHashData(struct HashMap* hashMap);
 

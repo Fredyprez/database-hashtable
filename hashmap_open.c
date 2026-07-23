@@ -5,13 +5,13 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-void initOpenHashMap(struct HashMap* hashMapOpen){
-    hashMapOpen->hashData = createOpenHashData(hashMapOpen);
-    hashMapOpen->insertStudent = insertStudentOpen;
-    hashMapOpen->removeStudent = removeStudentOpen;
-    hashMapOpen->searchStudent = searchOpen;
-    hashMapOpen->printHashMap = printOpenHashData;
-    hashMapOpen->printStudent = printStudentOpen;
+void initOpenHashMap(struct HashMap* hashMap){
+    hashMap->hashData = createOpenHashData(hashMap);
+    hashMap->insertStudent = insertStudentOpen;
+    hashMap->removeStudent = removeStudentOpen;
+    hashMap->searchStudent = searchOpen;
+    hashMap->printHashMap = printOpenHashData;
+    hashMap->printStudent = printStudentOpen;
 }
 
 struct OpenHashData* createOpenHashData(struct HashMap* hashMap){
