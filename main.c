@@ -21,10 +21,6 @@ int main(int argc, char* argv[]){
         enum Options userOption;
         printf("User Option: ");
         scanf("%d", &userOption);
-        // if (scanf("%d", &userOption) != 1) {
-        //     printf("Invalid input.\n");
-        //     return 1;
-        // }
 
         if (userOption == INIT && dataBase == NULL){
             int size;
