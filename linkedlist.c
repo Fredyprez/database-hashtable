@@ -23,15 +23,21 @@ void insertListNode(struct LinkedList* list, struct Student* student){
 }
 
 void removeListNode(struct LinkedList* list, int searchKey){
-    struct Node* prev = searchList(list, searchKey);
+    struct Node* prev = searchListPrev(list, searchKey);
     struct Node* cur = NULL;
     if (prev == NULL){
         if (list->head == NULL) return;
         else {
             cur = list->head;
-            list->head = NULL;
-            list->tail = NULL;
-            destroyNode(&cur);
+            if (cur == list->tail){
+                list->head = NULL;
+                list->tail = NULL;
+                destroyNode(&cur);
+            }
+            else {
+                list->head = cur->next;
+                destroyNode(&cur);
+            }
         }
      } 
      else {
@@ -48,23 +54,25 @@ void removeListNode(struct LinkedList* list, int searchKey){
      }
 }
 
-struct Node* searchList(struct LinkedList* list, int searchKey){
-    for (struct Node* node = list->head; node != NULL; node = node->next){
-        if (node == NULL) break;
+struct Node* searchListPrev(struct LinkedList* list, int searchKey){
+    struct Node* node = list->head;
+    for (; node != NULL; node = node->next)
         if (node->next != NULL && node->next->student->key == searchKey) return node;
-    }
     return NULL;
 }
 
 void destroyList(struct LinkedList** listPtr){
+    if (listPtr == NULL && *listPtr == NULL) return;
     struct LinkedList* list = *listPtr;
-    struct Node* cur = NULL;
+    struct Node* cur = list->head;
     struct Node* curNext = NULL;
-    for (cur = list->head; cur != NULL; cur = curNext){
-        curNext = cur->next;
-        destroyNode(&cur);
+    if (cur != NULL){
+    for (; cur != NULL; cur = curNext){
+            curNext = cur->next;
+            destroyNode(&cur);
+        }   
     }
-    free(list);
+    // implement **"free(list);"** if lists are individually allocated using malloc()
     *listPtr = NULL;
 }
 
@@ -75,22 +83,14 @@ void printList(struct LinkedList* list){
         printNode(node);
 }
 
-int main(){
-    struct LinkedList* bucket = createList();
-    struct Student* student = createStudent(1, "Fredy", "f@usf.edu");
-    insertListNode(bucket, student);
-    student = createStudent(3, "Bella", "b@usf.edu");
-    insertListNode(bucket, student);
-    student = createStudent(5, "Jesus", "j@usf.edu");
-    insertListNode(bucket, student);
-    printList(bucket);
-    removeListNode(bucket, 3);
-    printList(bucket);
-    removeListNode(bucket, 5);
-    printList(bucket);
-    removeListNode(bucket, 1);
-    printList(bucket);
-    destroyList(&bucket);
-
-    return 0;
+void printListNode(struct LinkedList* list, int searchKey){
+    if (list->head == NULL && list->tail == NULL) return;
+    if (list->head->student->key == searchKey){
+        printStudent(list->head->student);
+        return;
+    }
+    struct Node* node = searchListPrev(list, searchKey);
+    if (node == NULL) return;
+    node = node->next;
+    printStudent(node->student);
 }

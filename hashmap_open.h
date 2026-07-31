@@ -14,10 +14,10 @@ struct OpenHashData* createOpenHashData(struct HashMap* hashMap);
 
 void destroyOpenHashData(struct HashMap* hashMap);
 
-int searchOpen(struct HashMap* map, int searchKey);
+int searchOpen(struct HashMap* hashMap, int searchKey);
 
-void insertStudentOpen(struct HashMap* map, int studentKey, char* studentName, char* studentEmail);
-void removeStudentOpen(struct HashMap* map, int removeKey);
+void insertStudentOpen(struct HashMap* hashMap, int studentKey, char* studentName, char* studentEmail);
+void removeStudentOpen(struct HashMap* hashMap, int removeKey);
 
 void printOpenHashData(struct HashMap* hashMap);
 void printStudentOpen(struct HashMap* hashMap, int searchKey);

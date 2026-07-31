@@ -14,10 +14,10 @@ struct ChainHashData* createChainHashData(struct HashMap* map);
 
 void destroyChainHashData(struct HashMap* hashMap);
 
-int searchChain(struct HashMap* map, int searchKey);
+int searchChain(struct HashMap* hashMap, int searchKey);
 
-void insertStudentChain(struct HashMap* map, int studentKey, char* studentName, char* studentEmail);
-void removeStudentChain(struct HashMap* map, int removeKey);
+void insertStudentChain(struct HashMap* hashMap, int studentKey, char* studentName, char* studentEmail);
+void removeStudentChain(struct HashMap* hashMap, int removeKey);
 
 void printChainHashData(struct HashMap* hashMap);
 void printStudentChain(struct HashMap* hashMap, int searchKey);

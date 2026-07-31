@@ -11,7 +11,8 @@ struct LinkedList {
 struct LinkedList* createList();
 void insertListNode(struct LinkedList* list, struct Student* student);
 void removeListNode(struct LinkedList* list, int searchKey);
-struct Node* searchList(struct LinkedList* list, int searchKey);
+struct Node* searchListPrev(struct LinkedList* list, int searchKey);
 void destroyList(struct LinkedList** listPtr);
 void printList(struct LinkedList* list);
+void printListNode(struct LinkedList* list, int searchKey);
 #endif

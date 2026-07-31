@@ -4,7 +4,7 @@
 
 #include "student.h"
 
-enum type {
+enum implementationType {
     OPEN, CHAIN //add whatever implementation type
 };
 
@@ -18,14 +18,14 @@ struct HashMap {
     void (*printStudent)(struct HashMap*, int);
 
     int tableSize;
-    enum type implementation;
+    enum implementationType implementation;
 };
 
 int hashOne(int key, int size);
 int hashTwo(int key);
 int hash(int key, int size, int collisions);
 
-struct HashMap* initHashMap(enum type implementation, int size);
+struct HashMap* initHashMap(enum implementationType implementation, int size);
 struct HashMap* createHashMap(int size);
 void destroyHashMap(struct HashMap** map);
 #endif
