@@ -131,13 +131,13 @@ The probing implementation computes additional probe locations using quadratic p
 
 ## Building
 
-Compile using GCC:
+Compile using GCC (in root directory):
 
 ```bash
-gcc main.c hashmap.c hashmap_open.c hashmap_chain.c linkedlist.c student_node.c student.c -o hashmap
+gcc -Iinclude -Wall -Wextra src/*.c -o hashmap
 ```
 
-Run:
+Run (in root directory):
 
 ```bash
 ./hashmap
