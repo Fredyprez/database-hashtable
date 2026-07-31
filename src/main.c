@@ -1,5 +1,6 @@
 #include "hashmap.h"
 #include "hashmap_open.h"
+#include "hashmap_chain.h"
 
 #include <stdio.h>
 #include <stdlib.h>
