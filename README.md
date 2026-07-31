@@ -36,17 +36,26 @@ The primary goal of this project is educational: to strengthen systems programmi
 
 ```
 .
-├── hashmap.c
-├── hashmap.h
-├── hashmap_open.c
-├── hashmap_open.h
-├── hashmap_chain.c
-├── hashmap_chain.h
-├── linkedlist.c
-├── linkedlist.h
-├── student.c
-├── student.h
-└── main.c
+├── src 
+|    ├── main.c
+|    ├── hashmap.c
+|    ├── hashmap_open.c
+|    ├── hashmap_chain.c
+|    ├── linkedlist.c
+|    ├── student_node.c
+|    └── student.c
+├── include
+|    ├── hashmap.h
+|    ├── hashmap_open.h
+|    ├── hashmap_chain.h
+|    ├── linkedlist.h
+|    ├── student_node.h
+|    └── student.h
+├──  tests
+|    ├──
+|    ├──
+|    └──
+└── README.md
 ```
 
 ---
