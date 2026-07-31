@@ -5,13 +5,13 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-void initOpenHashMap(struct HashMap* hashMapOpen){
-    hashMapOpen->hashData = createOpenHashData(hashMapOpen);
-    hashMapOpen->insertStudent = insertStudentOpen;
-    hashMapOpen->removeStudent = removeStudentOpen;
-    hashMapOpen->searchStudent = searchOpen;
-    hashMapOpen->printHashMap = printOpenHashData;
-    hashMapOpen->printStudent = printStudentOpen;
+void initOpenHashMap(struct HashMap* hashMap){
+    hashMap->hashData = createOpenHashData(hashMap);
+    hashMap->insertStudent = insertStudentOpen;
+    hashMap->removeStudent = removeStudentOpen;
+    hashMap->searchStudent = searchOpen;
+    hashMap->printHashMap = printOpenHashData;
+    hashMap->printStudent = printStudentOpen;
 }
 
 struct OpenHashData* createOpenHashData(struct HashMap* hashMap){
@@ -63,6 +63,11 @@ void insertStudentOpen(struct HashMap* hashMap, int studentKey, char* studentNam
         data->table[index] = addStudent;
         data->status[index] = 1;
     }
+    if (collisions >= hashMap->tableSize/2) {
+        printf("Failed to insert student: Hash table is full.\n");
+        destroyStudent(&addStudent);
+        return;
+    }
 }
 
 void removeStudentOpen(struct HashMap* hashMap, int removeKey){
@@ -95,10 +100,8 @@ void printStudentOpen(struct HashMap* hashMap, int searchKey){
     int printIndex = searchOpen(hashMap, searchKey);
     struct OpenHashData* data = hashMap->hashData;
     if (printIndex == -1) printf("Student does not exist\n");
-    else printf("[%d] OCUPY and status is %d\tId: %d\tName: %s\tEmail: %s\n",
-                printIndex,
-                data->status[printIndex],
-                data->table[printIndex]->key,
-                data->table[printIndex]->name,
-                data->table[printIndex]->email);
+    else { 
+        struct Student* student = data->table[printIndex];
+        printStudent(student);
+    }
 }

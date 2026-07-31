@@ -1,7 +1,9 @@
 #include "hashmap.h"
 #include "hashmap_open.h"
+#include "hashmap_chain.h"
 
 #include <stdlib.h>
+#include <stdio.h>
 
 int hashOne(int key, int size){
     return key % size;
@@ -17,7 +19,7 @@ int hash(int key, int size, int collisions){
     return index % size;
 }
 
-struct HashMap* initHashMap(enum type implementation, int size){
+struct HashMap* initHashMap(enum implementationType implementation, int size){
     struct HashMap* hashMap = NULL;
     switch (implementation){
         case OPEN:
@@ -26,6 +28,11 @@ struct HashMap* initHashMap(enum type implementation, int size){
             hashMap->implementation = implementation;
             break;
         case CHAIN:
+            hashMap = createHashMap(size);
+            initChainHashMap(hashMap);
+            hashMap->implementation = implementation;
+            break;
+        default:
             break;
     }
     return hashMap;
@@ -33,6 +40,7 @@ struct HashMap* initHashMap(enum type implementation, int size){
 
 struct HashMap* createHashMap(int size){
     struct HashMap* hashMap = (struct HashMap*)malloc(sizeof(struct HashMap));
+    if (!hashMap) return NULL;
     hashMap->tableSize = size;
     return hashMap;
 }
@@ -45,6 +53,7 @@ void destroyHashMap(struct HashMap** mapPtr){
             destroyOpenHashData(removeMap);
             break;
         case CHAIN:
+            destroyChainHashData(removeMap);
             break;
     }
     free(removeMap);
